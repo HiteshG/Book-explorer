@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import  Gallery from'./gallery.js';
-import { FormGroup , FormControl , InputGroup, Glyphicon } from 'react-bootstrap';
-
+import { FormGroup , FormControl , InputGroup, Glyphicon ,Button} from 'react-bootstrap';
 
 
 class App extends Component {
@@ -43,30 +42,44 @@ class App extends Component {
          </p>
       
          <FormGroup>
-           <InputGroup>
+           <InputGroup className ="form ">
                <FormControl
                   type = "text" 
                   placeholder = "Search for a book...." 
-                  onChange = { event => this.setState({ query: event.target.value})}
-                  onKeyPress = { event => {
-                    if (event.key === 'Enter') {
-                      this.search();
-                    }
-                  }}
-                  className="form"   
-                  />
+                  onChange = {event => this.setState({ query: event.target.value})}  // how to handle blank enter or click
+                   onKeyPress={event => {
+                      if (event.key === 'Enter') {
+                  this.search()  
+                }
+              }}
+            />
                 
                 <InputGroup.Addon onClick = { () => this.search()} >
-                  <button className="btn">Search
-                  </button>
+                  <Glyphicon glyph ="search" > </Glyphicon >
                 </InputGroup.Addon>
             </InputGroup>
           </FormGroup>
+
           <div className="Page-two" >
           <Gallery items={this.state.items} />
            </div>
            <div className = "Page-three">
-             <p className="foot"> Copyrights © Hitesh Gautam  2017 || 
+           <div className = "contact" >
+         <h3>Do you have suggestions/feedback about this app?</h3>
+            <p className = "par">
+              Feel free to contact me.
+            </p>
+             </div>
+
+      <div className="text-center">
+      <a className="btn " href="#"><i className="fa fa-twitter fa-lg" id="twitterIcon"></i> Twitter </a>
+      <a className="btn " href="https://github.com/HiteshG"><i className="fa fa-github fa-lg" id="githubIcon"></i> GitHub </a>
+      <a className="btn " href="https://www.linkedin.com/in/hitesh-gautam-180858136/"><i className="fa fa-linkedin-square fa-lg" id="linkedinIcon"></i> LinkedIn </a>
+      <a className="btn " href="https://www.facebook.com/harry.gautam.98"> <i className="fa fa-facebook-official fa-lg" id="facebookIcon"></i>  Facebook </a>
+      <a className="btn " href="https://mail.google.com/mail/u/1/#inbox"><i className="fa fa-envelope fa-lg" id="gmailIcon"></i> Gmail </a>
+    </div>
+
+       <p className="foot"> Copyrights © Hitesh Gautam  2017 || 
              </p>
            </div>
       </div>
